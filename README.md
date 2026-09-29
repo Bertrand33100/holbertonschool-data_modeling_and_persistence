@@ -1,8 +1,44 @@
-# SQL - Opérations CRUD
+# SQL - CRUD Operations
 
-## Introduction
+## Retour d'expérience — Première utilisation de Claude
 
-Ce projet constitue une introduction à **SQL (Structured Query Language)** et au **modèle relationnel**, qui sont à la base de nombreux systèmes de gestion de données.
+Pour ce projet, j'ai utilisé **Claude pour la première fois** afin de découvrir son fonctionnement et de voir concrètement ce qu'un outil d'IA pouvait m'apporter dans mon travail de développement.
+
+La première chose que j'ai remarquée est sa **rapidité**, notamment pour les opérations liées à Git et GitHub :
+
+* préparation des commandes ;
+* `git add` ;
+* `git commit` ;
+* `git push` ;
+* organisation rapide des étapes du projet.
+
+Cela m'a permis de découvrir une autre manière d'utiliser un assistant IA dans un environnement de développement et de voir comment il pouvait accélérer certaines tâches répétitives.
+
+### Ce que cette expérience m'a apporté
+
+Cette première utilisation m'a surtout permis de :
+
+* découvrir le fonctionnement de Claude ;
+* comparer son utilisation avec ma propre manière de travailler ;
+* comprendre qu'une IA peut être très efficace pour certaines tâches répétitives ;
+* gagner du temps sur certaines opérations Git ;
+* réfléchir à la manière dont je souhaite utiliser l'IA dans mes projets.
+
+Cette expérience était volontairement une **expérimentation**. Je voulais comprendre l'outil en pratique plutôt que simplement en entendre parler.
+
+### Mon choix pour la suite
+
+Après cette première expérience, **je n'ai plus utilisé Claude pour mes autres projets**.
+
+L'objectif était de tester l'outil sur ce projet, d'observer ce qu'il pouvait apporter, puis de poursuivre les projets suivants avec ma propre méthode de travail et les outils que j'utilise habituellement.
+
+Cette expérience m'a donc permis de mieux comprendre les possibilités et les limites pratiques d'un assistant IA dans un projet de développement.
+
+---
+
+# Introduction
+
+Ce projet constitue une introduction à **SQL (Structured Query Language)** et au **modèle relationnel**.
 
 Une base de données relationnelle organise les informations sous forme de **tables**.
 
@@ -22,7 +58,7 @@ SQL permet de créer, consulter et modifier ces données.
 
 ---
 
-## CRUD
+# CRUD
 
 CRUD représente les quatre opérations fondamentales sur les données :
 
@@ -37,7 +73,7 @@ Le projet utilise également `CREATE TABLE` pour définir la structure d'une tab
 
 ---
 
-## SQLite
+# SQLite
 
 Pour ce projet, le système de base de données utilisé est **SQLite**.
 
@@ -65,7 +101,7 @@ sqlite3 my_database.db < 0-create_table.sql
 
 ---
 
-## Modèle relationnel
+# Modèle relationnel
 
 Dans ce projet, on travaille avec une table appelée :
 
@@ -78,7 +114,7 @@ books
 | Colonne          | Type      | Description                      |
 | ---------------- | --------- | -------------------------------- |
 | `id`             | `INTEGER` | Identifiant unique               |
-| `title`          | `TEXT`    | Titre du livre                   |
+| `title`          | `TEXT`    | Nom du livre                     |
 | `author`         | `TEXT`    | Nom de l'auteur                  |
 | `genre`          | `TEXT`    | Genre du livre                   |
 | `price`          | `REAL`    | Prix du livre                    |
@@ -91,7 +127,7 @@ books
 
 Avant de stocker des données, il faut définir la structure de la table.
 
-On utilise :
+La commande utilisée est :
 
 ```sql
 CREATE TABLE
@@ -137,8 +173,6 @@ INSERT
 ajouter une nouvelle ligne
 ```
 
-Une insertion ajoute donc un nouvel enregistrement dans la table.
-
 ---
 
 # 3. SELECT
@@ -159,9 +193,9 @@ Avec `SELECT`, on peut :
 
 # 4. Sélectionner certaines colonnes
 
-On peut récupérer uniquement les colonnes dont on a besoin.
+Il est possible de récupérer uniquement les colonnes nécessaires.
 
-Par exemple :
+Le principe est :
 
 ```text
 SELECT
@@ -172,8 +206,6 @@ FROM
    ↓
 Quelle table ?
 ```
-
-Il n'est donc pas obligatoire de récupérer toutes les colonnes d'une table.
 
 ---
 
@@ -199,13 +231,13 @@ condition
 lignes correspondantes
 ```
 
-Exemple de condition :
+Exemple :
 
 ```sql
 WHERE price > 10
 ```
 
-Cela permet de sélectionner les livres dont le prix est supérieur à 10.
+Cette condition permet de sélectionner les livres dont le prix est supérieur à 10.
 
 ---
 
@@ -232,8 +264,6 @@ quelle(s) ligne(s) ?
 ## ⚠️ Attention
 
 Un `UPDATE` sans `WHERE` peut modifier **toutes les lignes** de la table.
-
-Il faut donc être particulièrement prudent avec cette commande.
 
 ---
 
@@ -265,11 +295,11 @@ Un `DELETE` sans `WHERE` peut supprimer **toutes les lignes** de la table.
 
 `ORDER BY` permet de **trier les résultats**.
 
-Point important :
+Un point important à retenir :
 
 > L'ordre des résultats n'est pas garanti si `ORDER BY` n'est pas utilisé.
 
-Si un exercice demande un ordre précis, il faut donc utiliser `ORDER BY`.
+Lorsqu'un ordre précis est demandé, il faut donc utiliser `ORDER BY`.
 
 ---
 
@@ -341,7 +371,7 @@ Roman
 Science-fiction
 ```
 
-Avec un regroupement par genre :
+Après regroupement :
 
 ```text
 Fantasy          → 2
@@ -369,7 +399,7 @@ REQUÊTE
 ensemble de résultats
 ```
 
-SQL ne fonctionne pas nécessairement ligne par ligne comme une boucle classique.
+SQL ne fonctionne donc pas nécessairement ligne par ligne comme une boucle classique.
 
 ---
 
@@ -379,7 +409,7 @@ SQLite utilise un système de typage flexible.
 
 Les types déclarés ne sont donc pas strictement appliqués de la même manière que dans certains systèmes de bases de données de production.
 
-Cependant, il faut toujours choisir des types cohérents :
+Il faut néanmoins choisir des types cohérents :
 
 ```text
 INTEGER → nombres entiers
@@ -397,7 +427,7 @@ Ce projet se concentre volontairement sur les bases de SQL.
 
 Les notions suivantes ne sont pas utilisées :
 
-* `JOIN`
+* `JOIN` ;
 * sous-requêtes ;
 * fonctions avancées ;
 * optimisations spécifiques à une base de données.
@@ -509,4 +539,56 @@ sans `WHERE` peut supprimer **toutes les lignes**.
 * limiter avec `LIMIT` ;
 * utiliser `COUNT`, `SUM`, `AVG`, `MIN` et `MAX` ;
 * regrouper les données avec `GROUP BY` ;
-* comprendre les principaux risques
+* comprendre les principaux risques liés à `UPDATE` et `DELETE`.
+
+---
+
+# Résumé visuel
+
+```text
+                         SQL
+                          │
+              ┌───────────┴───────────┐
+              │                       │
+          STRUCTURE                 DONNÉES
+              │                       │
+       CREATE TABLE                  CRUD
+                                      │
+              ┌───────────────────────┼───────────────────────┐
+              │                       │                       │
+           CREATE                   READ                  UPDATE / DELETE
+           INSERT                  SELECT
+                                      │
+                            ┌─────────┼─────────┐
+                            │         │         │
+                          WHERE   ORDER BY    LIMIT
+                                      │
+                              AGRÉGATION
+                                      │
+                    ┌─────────┬───────┼───────┬───────┐
+                    │         │       │       │       │
+                  COUNT      SUM     AVG     MIN     MAX
+                                      │
+                                  GROUP BY
+```
+
+---
+
+# Conclusion
+
+Ce projet m'a permis de découvrir les bases de **SQL et des bases de données relationnelles** à travers SQLite.
+
+J'ai notamment travaillé sur :
+
+* la création d'une table ;
+* l'insertion de données ;
+* la lecture de données ;
+* la modification et la suppression ;
+* le filtrage ;
+* le tri ;
+* les fonctions d'agrégation ;
+* le regroupement avec `GROUP BY`.
+
+Il m'a également permis de faire une **première expérimentation avec Claude** dans un projet de développement, notamment pour observer son efficacité sur certaines tâches répétitives liées à Git et GitHub.
+
+Après cette expérimentation, j'ai choisi de **ne plus utiliser Claude pour les projets suivants**, afin de poursuivre mon apprentissage et mon développement avec ma propre méthode de travail.
